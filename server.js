@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000
 
 app.use("/assets", express.static(path.resolve(__dirname, "frontend", "assets")))
 
-app.get('/*', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "index.html"))
 })
 
