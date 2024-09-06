@@ -57,7 +57,7 @@ export const userQuery = `
     }
 `
 
-export function drawPieChart(data, cx, cy, radius) {
+export const drawPieChart = (data, cx, cy, radius) => {
     let totalPercentage = 0;
     data.forEach(item => totalPercentage += item);
 
@@ -78,10 +78,10 @@ export function drawPieChart(data, cx, cy, radius) {
         let labels = (i == 0) ? "Fail" : "Pass";
         path.id = labels;
         path.setAttribute("fill", getRandomColor());
-        path.addEventListener("mouseover", function() {
+        path.addEventListener("mouseover", function () {
             mouseover(labels);
         });
-        path.addEventListener("mouseout", function() {
+        path.addEventListener("mouseout", function () {
             mouseout(labels);
         });
         document.getElementById("pie-chart").appendChild(path);
@@ -107,7 +107,7 @@ export function drawPieChart(data, cx, cy, radius) {
     });
 }
 
-export function getRandomColor() {
+export const getRandomColor = () => {
     const r = Math.floor(Math.random() * 200);
     const g = Math.floor(Math.random() * 200);
     const b = Math.floor(Math.random() * 200);
@@ -116,7 +116,7 @@ export function getRandomColor() {
 }
 
 // Fonction pour dessiner le diagramme en barres
-export function drawBarChart(data, x, y, width, height) {
+export const drawBarChart = (data, x, y, width, height) => {
     const total = data.reduce((acc, item) => acc + item.value, 0);
     const barWidth = (width / data.length);
 
@@ -124,10 +124,10 @@ export function drawBarChart(data, x, y, width, height) {
         const barHeight = ((item.value / total) * height) * 5;
         const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
         bar.id = item.label;
-        bar.addEventListener("mouseover", function() {
+        bar.addEventListener("mouseover", () => {
             mouseOverBar(item.label);
         });
-        bar.addEventListener("mouseout", function() {
+        bar.addEventListener("mouseout", () => {
             mouseout(item.label);
         });
         bar.setAttribute("x", x + index * barWidth);
@@ -149,7 +149,7 @@ export function drawBarChart(data, x, y, width, height) {
 }
 
 // Fonction pour afficher un label lors du survol d'une portion du diagramme
-export function mouseover(id) {
+export const mouseover = (id) => {
     let label = document.getElementById("label" + id);
     if (label != null) {
         label.style.display = "block";
@@ -159,7 +159,7 @@ export function mouseover(id) {
 }
 
 // Fonction pour afficher un label lors du survol d'une barre du diagramme
-export function mouseOverBar(id) {
+export const mouseOverBar = (id) => {
     let label = document.getElementById("label" + id);
     if (label != null) {
         label.style.display = "block";
@@ -170,7 +170,7 @@ export function mouseOverBar(id) {
 }
 
 // Fonction pour cacher un label lorsqu'une section du diagramme n'est plus survolée
-export function mouseout(id) {
+export const mouseout = (id) => {
     let label = document.getElementById("label" + id);
     if (label != null) {
         label.style.display = "none";
