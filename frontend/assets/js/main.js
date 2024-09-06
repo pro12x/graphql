@@ -1,6 +1,6 @@
 import Dashboard from "./views/Dashboard.js"
 import Login from "./views/Login.js"
-import {checkForm, credentials, showMessage} from "./utils.js"
+import { checkForm, credentials, showMessage } from "./utils.js"
 import AbstractView from "./views/AbstractView.js";
 
 let authMethods = new Login()
@@ -16,8 +16,6 @@ const router = async () => {
     const routes = [
         { path: "/", view: Login },
         { path: "/dashboard", view: Dashboard },
-        { path: "/posts", view: Dashboard },
-        { path: "/settings", view: Dashboard },
     ]
 
     // Test each route for potential match
