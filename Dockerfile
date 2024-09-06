@@ -1,7 +1,7 @@
-FROM node:16
+FROM node:20
 WORKDIR /app
 LABEL maintainer="Franchis Janel MOKOMBA"
-COPY package*.json ./
+COPY package.json ./
 RUN npm install
 COPY . .
 EXPOSE 3000
